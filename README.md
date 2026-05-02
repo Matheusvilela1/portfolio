@@ -44,3 +44,30 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+src/
+├── types/
+│   └── index.ts          ← TechItem, ProjectItem, SocialLink, NavItem, enums
+├── data/
+│   └── index.ts          ← todos os dados estáticos (edite aqui seus projetos!)
+├── hooks/
+│   ├── useTypingEffect.ts
+│   ├── useVisible.ts
+│   ├── useScrolled.ts
+│   └── index.ts          ← barrel export
+├── components/
+│   ├── Navbar.tsx
+│   ├── SocialIcon.tsx
+│   ├── TechCard.tsx      ← agora com barra de nível e hover colorido
+│   ├── ProjectCard.tsx   ← novo: badges de status, chips de tech, links
+│   └── index.ts
+├── sections/
+│   ├── HeroSection.tsx
+│   ├── SobreSection.tsx
+│   ├── TecnologiasSection.tsx  ← filtros por categoria
+│   ├── ProjetosSection.tsx     ← novo
+│   ├── ContatoSection.tsx
+│   └── index.ts
+└── App.tsx               ← raiz limpa, só monta os blocos

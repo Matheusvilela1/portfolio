@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navbar } from "./components";
+import {
+  HeroSection,
+  SobreSection,
+  TecnologiasSection,
+  ProjetosSection,
+  ContatoSection,
+} from "./sections";
 
-function App() {
+export default function App(): React.ReactElement {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      fontFamily: "'Segoe UI', system-ui, sans-serif",
+      color: "#fff",
+      background: "#0d0d0d",
+      minHeight: "100vh",
+    }}>
+      <Navbar />
+      <HeroSection />
+      <SobreSection />
+      <TecnologiasSection />
+      <ProjetosSection />
+      <ContatoSection />
+
+      <footer style={{
+        padding: "24px",
+        borderTop: "1px solid rgba(255,255,255,0.07)",
+        textAlign: "center",
+        color: "rgba(255,255,255,0.25)",
+        fontSize: 13,
+      }}>
+        © {new Date().getFullYear()} Matheus Vilela · React + TypeScript
+      </footer>
+
+      <style>{`
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .hamburger   { display: flex !important; }
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; }
+      `}</style>
     </div>
   );
 }
-
-export default App;
