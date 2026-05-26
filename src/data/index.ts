@@ -20,7 +20,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const TECHS: TechItem[] = [
   // Linguagens
   { name: "Java",       icon: "☕", color: "#f89820", category: "linguagem",   level: 4 },
-  { name: "PHP",        icon: "🐘", color: "#8892bf", category: "backend",     level: 3 },
   { name: "Python",     icon: "🐍", color: "#3572a5", category: "linguagem",   level: 3 },
   { name: "JavaScript", icon: "⚡", color: "#f7df1e", category: "linguagem",   level: 4 },
   { name: "TypeScript", icon: "🔷", color: "#3178c6", category: "linguagem",   level: 3 },
@@ -29,6 +28,11 @@ export const TECHS: TechItem[] = [
   { name: "HTML",       icon: "🌐", color: "#e34c26", category: "frontend",    level: 5 },
   { name: "CSS",        icon: "🎨", color: "#1572b6", category: "frontend",    level: 4 },
   { name: "React",      icon: "⚛️", color: "#61dafb", category: "frontend",    level: 3 },
+
+  // Back-end
+  { name: "Node.js",    icon: "🟢", color: "#339933", category: "backend",     level: 3 },
+  { name: "PHP",        icon: "🐘", color: "#8892bf", category: "backend",     level: 3 },
+  { name: "Next.js",    icon: "🚀", color: "#4479a1", category: "backend",     level: 3 },  
 
   // Ferramentas
   { name: "Git",        icon: "🔀", color: "#f05032", category: "ferramenta",  level: 4 },
