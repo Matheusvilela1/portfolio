@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { NAV_ITEMS } from "../data";
-import { useScrolled } from "../hooks";
+import { useActiveSection, useScrolled } from "../hooks";
+
+const SECTION_IDS = NAV_ITEMS.map((n) => n.id);
 
 export const Navbar: React.FC = () => {
   const scrolled = useScrolled(60);
+  const active = useActiveSection(SECTION_IDS);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const scrollTo = (id: string): void => {
@@ -13,53 +16,22 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        height: 60,
-        padding: "0 24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        background: scrolled ? "rgba(13,13,13,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.07)" : "none",
-        transition: "all 0.3s",
-      }}>
-        {/* Logo */}
-        <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: "0.04em", color: "#a78bfa" }}>
-          MV<span style={{ color: "#fff" }}>.</span>
-        </span>
+      <nav className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+        <button className="brand" onClick={() => scrollTo("banner")} aria-label="Voltar ao início">
+          {/* Ícone ao lado do logo — desativado. Para reativar, descomente a linha abaixo
+              e as regras ".brand img" em index.css.
+          <img src={`${process.env.PUBLIC_URL}/favicon.svg`} alt="" width={34} height={34} />
+          */}
+          <span>MV<em>.</em></span>
+        </button>
 
-        {/* Desktop links */}
-        <ul style={{
-          display: "flex",
-          gap: 32,
-          listStyle: "none",
-          margin: 0,
-          padding: 0,
-        }}
-          className="desktop-nav"
-        >
+        <ul className="nav__links">
           {NAV_ITEMS.map(({ id, label }) => (
             <li key={id}>
               <button
                 onClick={() => scrollTo(id)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "rgba(255,255,255,0.7)",
-                  cursor: "pointer",
-                  fontSize: 14,
-                  fontWeight: 500,
-                  padding: 0,
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#a78bfa")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                className={`nav__link sel-hover ${active === id ? "is-active" : ""}`}
+                aria-current={active === id ? "true" : undefined}
               >
                 {label}
               </button>
@@ -67,54 +39,26 @@ export const Navbar: React.FC = () => {
           ))}
         </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          className="hamburger"
-          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-          style={{
-            background: "none",
-            border: "none",
-            color: "#fff",
-            fontSize: 22,
-            cursor: "pointer",
-            display: "none",
-            lineHeight: 1,
-          }}
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
+        <div className="nav__side">
+          <span className="nav__status">Disponível</span>
+          <button className="btn btn--red btn--sm" onClick={() => scrollTo("contato")}>
+            Fale comigo →
+          </button>
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="nav__burger"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile overlay */}
       {menuOpen && (
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 90,
-          background: "rgba(13,13,13,0.97)",
-          backdropFilter: "blur(16px)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 32,
-        }}>
+        <div className="nav__overlay">
           {NAV_ITEMS.map(({ id, label }) => (
-            <button
-              key={id}
-              onClick={() => scrollTo(id)}
-              style={{
-                background: "none",
-                border: "none",
-                color: "#fff",
-                fontSize: 28,
-                fontWeight: 700,
-                cursor: "pointer",
-              }}
-            >
-              {label}
-            </button>
+            <button key={id} onClick={() => scrollTo(id)}>{label}</button>
           ))}
         </div>
       )}

@@ -1,5 +1,5 @@
 // ── Tecnologias ───────────────────────────────────────────────────────────────
-export type TechCategory = "frontend" | "backend" | "linguagem" | "ferramenta";
+export type TechCategory = "frontend" | "backend" | "linguagem" | "ferramenta" | "ia";
 
 export interface TechItem {
   name: string;
@@ -21,6 +21,7 @@ export interface ProjectItem {
   liveUrl?: string;
   status: ProjectStatus;
   icon: string;             // emoji representativo
+  image?: string;           // print do projeto (aparece no card no lugar da arte)
 }
 
 // ── Social ────────────────────────────────────────────────────────────────────
@@ -34,4 +35,11 @@ export interface SocialLink {
 export interface NavItem {
   id: string;
   label: string;
+}
+
+// ── Trajetória ────────────────────────────────────────────────────────────────
+export interface TimelineItem {
+  when: string;
+  title: string;
+  text: string;
 }

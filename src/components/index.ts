@@ -1,4 +1,9 @@
-export { Navbar }      from "./Navbar";
-export { SocialIcon }  from "./SocialIcon";
-export { TechCard }    from "./TechCard";
-export { ProjectCard } from "./ProjectCard";
+export { Navbar }                from "./Navbar";
+export { SocialIcon }            from "./SocialIcon";
+export { TechCard }              from "./TechCard";
+export { ProjectCard }           from "./ProjectCard";
+export { Reveal, SectionTitle }  from "./Reveal";
+export { IntroLoader }           from "./IntroLoader";
+export { CursorTrail }           from "./CursorTrail";
+export { CompareSlider }         from "./CompareSlider";
+export { Marquee }               from "./Marquee";

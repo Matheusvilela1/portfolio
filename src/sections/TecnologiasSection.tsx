@@ -1,18 +1,35 @@
 import { useState } from "react";
-import { TechCard } from "../components";
-import { TECHS } from "../data";
+import { Reveal, SectionTitle, TechCard } from "../components";
+import { CATEGORY_LABELS, TECHS } from "../data";
 import type { TechCategory } from "../types";
 
-const CATEGORY_LABELS: Record<TechCategory | "todos", string> = {
-  todos:      "Todos",
-  linguagem:  "Linguagens",
-  frontend:   "Front-end",
-  backend:    "Back-end",
-  ferramenta: "Ferramentas",
-};
-
-const ALL_FILTERS = ["todos", "linguagem", "frontend", "backend", "ferramenta"] as const;
+const ALL_FILTERS = ["todos", "linguagem", "frontend", "backend", "ferramenta", "ia"] as const;
 type Filter = typeof ALL_FILTERS[number];
+
+const filterLabel = (f: Filter): string => (f === "todos" ? "Todos" : CATEGORY_LABELS[f as TechCategory]);
+
+// Ramo de louro: folhas alternadas ao longo de uma curva (Bézier quadrática)
+const P0 = [32, 78], P1 = [2, 46], P2 = [24, 4];
+const LEAVES = Array.from({ length: 7 }).map((_, i) => {
+  const t = 0.08 + i * 0.135;
+  const u = 1 - t;
+  const x = u * u * P0[0] + 2 * u * t * P1[0] + t * t * P2[0];
+  const y = u * u * P0[1] + 2 * u * t * P1[1] + t * t * P2[1];
+  const dx = 2 * u * (P1[0] - P0[0]) + 2 * t * (P2[0] - P1[0]);
+  const dy = 2 * u * (P1[1] - P0[1]) + 2 * t * (P2[1] - P1[1]);
+  const angle = (Math.atan2(dy, dx) * 180) / Math.PI + 90;
+  const side = i % 2 === 0 ? -1 : 1;
+  return { x: x + side * 4, y, angle: angle + side * 38 };
+});
+
+const Laurel: React.FC = () => (
+  <svg viewBox="0 0 40 80" aria-hidden="true">
+    <path d={`M${P0} Q${P1} ${P2}`} fill="none" stroke="currentColor" strokeWidth="1.4" />
+    {LEAVES.map((l, i) => (
+      <ellipse key={i} cx={l.x} cy={l.y} rx="3.2" ry="7" transform={`rotate(${l.angle} ${l.x} ${l.y})`} />
+    ))}
+  </svg>
+);
 
 export const TecnologiasSection: React.FC = () => {
   const [filter, setFilter] = useState<Filter>("todos");
@@ -22,72 +39,45 @@ export const TecnologiasSection: React.FC = () => {
     : TECHS.filter((t) => t.category === filter);
 
   return (
-    <section
-      id="tecnologias"
-      style={{
-        padding: "100px 24px",
-        background: "linear-gradient(180deg, #0d0d0d 0%, #0a0a1a 100%)",
-      }}
-    >
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <h2 style={{
-          fontSize: "clamp(28px, 4vw, 42px)",
-          fontWeight: 800,
-          marginBottom: 12,
-          textAlign: "center",
-          color: "#fff",
-        }}>
-          Tecnologias
-        </h2>
-        <p style={{
-          textAlign: "center",
-          color: "rgba(255,255,255,0.4)",
-          marginBottom: 32,
-          fontSize: 15,
-        }}>
-          Ferramentas e linguagens que uso no dia a dia
-        </p>
+    <section id="tecnologias" className="section">
+      <div className="wrap stack">
+        <Reveal variant="frame" label="Frame · Stack" className="stack__panel-wrap">
+          <div className="stack__panel">
+            <SectionTitle index="02" eyebrow="Stack & domínio" lines={["O código.", "A prática."]} accentLast />
 
-        {/* Filtros de categoria */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: 8,
-          marginBottom: 40,
-        }}>
-          {ALL_FILTERS.map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              style={{
-                padding: "7px 18px",
-                borderRadius: 20,
-                fontSize: 13,
-                fontWeight: 600,
-                cursor: "pointer",
-                border: "1px solid",
-                transition: "all 0.2s",
-                borderColor: filter === f ? "#a78bfa" : "rgba(255,255,255,0.15)",
-                background: filter === f ? "rgba(167,139,250,0.15)" : "transparent",
-                color: filter === f ? "#a78bfa" : "rgba(255,255,255,0.5)",
-              }}
-            >
-              {CATEGORY_LABELS[f]}
-            </button>
-          ))}
-        </div>
+            <div className="laurel">
+              <Laurel />
+              <strong>{TECHS.length}</strong>
+              <Laurel />
+            </div>
+            <p className="laurel-caption">Tecnologias no dia a dia</p>
 
-        {/* Grid de cards */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
-          gap: 14,
-        }}>
+            <p className="lead">
+              Linguagens, frameworks, ferramentas e IA (ChatGPT e Claude) que uso para tirar
+              projetos do papel — com o nível honesto de cada uma.
+            </p>
+
+            <div className="tabs" role="tablist" aria-label="Filtrar tecnologias">
+              {ALL_FILTERS.map((f) => (
+                <button
+                  key={f}
+                  role="tab"
+                  aria-selected={filter === f}
+                  onClick={() => setFilter(f)}
+                  className={`tab ${filter === f ? "is-active" : ""}`}
+                >
+                  {filterLabel(f)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <ul className="techs">
           {filtered.map((tech, i) => (
-            <TechCard key={tech.name} tech={tech} delay={i * 60} />
+            <TechCard key={tech.name} tech={tech} delay={i * 70} />
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

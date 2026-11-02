@@ -1,156 +1,124 @@
-import { SocialIcon } from "../components";
-import { SOCIAL_LINKS, TYPE_WORDS } from "../data";
+import { useState } from "react";
+import { Reveal, SocialIcon } from "../components";
+import { HERO_PHOTO, PROJECTS, SOCIAL_LINKS, TECHS, TYPE_WORDS } from "../data";
 import { useTypingEffect } from "../hooks";
 
-export const HeroSection: React.FC = () => {
-  const typed = useTypingEffect(TYPE_WORDS, 2000);
+interface Props {
+  ready: boolean; // false enquanto a intro está na tela
+}
 
-  const scrollTo = (id: string): void =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+const scrollTo = (id: string): void =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+const STATS = [
+  { value: `${PROJECTS.length}.`, label: "Projetos\nno GitHub" },
+  { value: `${TECHS.length}.`,    label: "Tecnologias\nno stack" },
+  { value: "∞.",                  label: "Vontade de\naprender" },
+];
+
+const GHOSTS = [
+  { id: "a", name: "React" },
+  { id: "b", name: "TypeScript" },
+  { id: "c", name: "Node.js" },
+];
+
+const Arrow: React.FC = () => (
+  <svg viewBox="0 0 16 16"><path d="M2 1.5l11 6.2-4.9 1.3-2.2 4.8z" strokeLinejoin="round" /></svg>
+);
+
+// Silhueta usada se a imagem do hero (HERO_PHOTO) não carregar
+const Silhouette: React.FC = () => (
+  <svg viewBox="0 0 300 400" role="img" aria-label="Espaço para a foto">
+    <defs>
+      <linearGradient id="sil-fill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="#2a2270" />
+        <stop offset="1" stopColor="#0a0920" />
+      </linearGradient>
+      <linearGradient id="sil-rim" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#ff3b5c" />
+        <stop offset="0.5" stopColor="#ff3b5c" stopOpacity="0" />
+        <stop offset="1" stopColor="#5b8cff" />
+      </linearGradient>
+    </defs>
+    <g fill="url(#sil-fill)" stroke="url(#sil-rim)" strokeWidth="2.5">
+      <path d="M150 52c36 0 58 28 58 66 0 30-12 56-30 70l2 24c44 10 86 30 98 70 6 22 8 70 8 118H14c0-48 2-96 8-118 12-40 54-60 98-70l2-24c-18-14-30-40-30-70 0-38 22-66 58-66z" />
+    </g>
+  </svg>
+);
+
+export const HeroSection: React.FC<Props> = ({ ready }) => {
+  const typed = useTypingEffect(TYPE_WORDS, 2000);
+  const [hasPhoto, setHasPhoto] = useState<boolean>(true);
 
   return (
-    <section
-      id="banner"
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        background: "linear-gradient(135deg, #1a0533 0%, #0d1f3c 50%, #0d0d0d 100%)",
-        padding: "80px 24px 40px",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Glows decorativos */}
-      <div style={{
-        position: "absolute", top: "10%", left: "5%",
-        width: 500, height: 500, borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute", bottom: "10%", right: "5%",
-        width: 400, height: 400, borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
+    <section id="banner" className="hero">
+      <div className="hero__grid" aria-hidden="true" />
 
-      <div style={{
-        maxWidth: 1000,
-        margin: "0 auto",
-        width: "100%",
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        gap: 48,
-      }}>
-        {/* Texto */}
-        <div style={{ flex: "1 1 300px" }}>
-          <p style={{
-            fontSize: 13,
-            color: "#a78bfa",
-            fontWeight: 600,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            marginBottom: 8,
-          }}>
-            👋 Olá, seja bem-vindo
-          </p>
+      <Reveal variant="frame" label="Display · PORTFÓLIO" start={ready} className="hero__word">
+        <span aria-hidden="true">PORTFÓLIO</span>
+      </Reveal>
 
-          <h1 style={{
-            fontSize: "clamp(36px, 6vw, 64px)",
-            fontWeight: 800,
-            margin: "0 0 8px",
-            lineHeight: 1.1,
-          }}>
-            Matheus<br />
-            <span style={{
-              background: "linear-gradient(90deg, #a78bfa, #38bdf8)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
-              Vilela
-            </span>
+      <Reveal variant="frame" label="Image · foto.svg" start={ready} delay={250} className="hero__photo">
+        {hasPhoto
+          ? <img src={HERO_PHOTO} alt="Matheus Vilela" onError={() => setHasPhoto(false)} />
+          : <Silhouette />}
+      </Reveal>
+
+      <div className="hero__intro">
+        <Reveal variant="up" start={ready} delay={450}>
+          <p className="hero__hello">Olá, eu sou</p>
+        </Reveal>
+
+        <Reveal variant="frame" label="H1 · Nome" start={ready} delay={550}>
+          <h1 className="hero__name">
+            <span>Matheus</span>
+            <span>Vilela<i>.</i></span>
           </h1>
+        </Reveal>
 
-          {/* Typing */}
-          <div style={{ height: 56, display: "flex", alignItems: "center", marginBottom: 24 }}>
-            <p style={{ fontSize: 22, fontWeight: 600, color: "rgba(255,255,255,0.85)", margin: 0 }}>
-              Desenvolvedor{" "}
-              <span style={{ color: "#38bdf8" }}>
-                {typed}
-                <span style={{
-                  borderRight: "2px solid #38bdf8",
-                  marginLeft: 2,
-                  animation: "blink 1s step-end infinite",
-                }} />
-              </span>
-            </p>
+        <Reveal variant="up" start={ready} delay={850}>
+          <p className="hero__role">
+            Desenvolvedor<br />
+            <span className="hero__typed">{typed}</span>
+            <span className="caret" />
+          </p>
+          <p className="hero__bio">
+            Estudante de ADS no IFPE Garanhuns, fascinado por tecnologia. Transformo ideias
+            em interfaces rápidas e sistemas que funcionam — com IA no fluxo.
+          </p>
+          <div className="hero__ctas">
+            <button className="btn btn--red" onClick={() => scrollTo("projetos")}>Ver projetos →</button>
+            <button className="btn btn--ghost" onClick={() => scrollTo("contato")}>Contato</button>
           </div>
-
-          {/* Sociais */}
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="socials">
             {SOCIAL_LINKS.map((s) => <SocialIcon key={s.label} {...s} />)}
           </div>
-
-          {/* CTA buttons */}
-          <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button
-              onClick={() => scrollTo("sobre")}
-              style={{
-                padding: "12px 28px",
-                borderRadius: 8,
-                border: "none",
-                background: "linear-gradient(90deg, #7c3aed, #2563eb)",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: 14,
-                cursor: "pointer",
-                transition: "opacity 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              Sobre mim
-            </button>
-            <button
-              onClick={() => scrollTo("contato")}
-              style={{
-                padding: "12px 28px",
-                borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.2)",
-                background: "transparent",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: 14,
-                cursor: "pointer",
-                transition: "border-color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#a78bfa")}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
-            >
-              Contato
-            </button>
-          </div>
-        </div>
-
-        {/* Avatar */}
-        <div style={{ flex: "0 0 auto", display: "flex", justifyContent: "center" }}>
-          <div style={{
-            width: 220,
-            height: 220,
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #7c3aed, #2563eb)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 80,
-            boxShadow: "0 0 60px rgba(124,58,237,0.4)",
-          }}>
-            👨‍💻
-          </div>
-        </div>
+        </Reveal>
       </div>
+
+      <ul className="hero__stats">
+        {STATS.map((s, i) => (
+          <li key={s.label}>
+            <Reveal variant="frame" label={`Stat 0${i + 1}`} start={ready} delay={1000 + i * 150}>
+              <div className="stat">
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </div>
+            </Reveal>
+          </li>
+        ))}
+      </ul>
+
+      <div className={`ghosts ${ready ? "is-on" : ""}`} aria-hidden="true">
+        {GHOSTS.map((g) => (
+          <span key={g.id} className={`ghost ghost--${g.id}`}>
+            <Arrow />
+            <b>{g.name}</b>
+          </span>
+        ))}
+      </div>
+
+      <button className="hero__scroll" onClick={() => scrollTo("projetos")}>Role para explorar</button>
     </section>
   );
 };

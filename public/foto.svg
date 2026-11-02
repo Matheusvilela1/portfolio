@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="t">
+  <title id="t">Hacker de capuz — avatar do Matheus Vilela</title>
+  <defs>
+    <!-- tecido do moletom -->
+    <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2468"/>
+      <stop offset="0.55" stop-color="#17134a"/>
+      <stop offset="1" stop-color="#0a0920"/>
+    </linearGradient>
+    <linearGradient id="hood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a3088"/>
+      <stop offset="0.5" stop-color="#1f1a5c"/>
+      <stop offset="1" stop-color="#110e38"/>
+    </linearGradient>
+    <!-- luz de recorte: vermelho à esquerda, azul à direita -->
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff3b5c"/>
+      <stop offset="0.42" stop-color="#ff3b5c" stop-opacity="0"/>
+      <stop offset="0.58" stop-color="#5b8cff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#5b8cff"/>
+    </linearGradient>
+    <!-- abertura do capuz: escuridão total com brilho de tela embaixo -->
+    <radialGradient id="void" cx="0.5" cy="0.82" r="0.75">
+      <stop offset="0" stop-color="#3b0f2a"/>
+      <stop offset="0.35" stop-color="#12081f"/>
+      <stop offset="1" stop-color="#030208"/>
+    </radialGradient>
+    <radialGradient id="screenGlow" cx="0.5" cy="0" r="0.6">
+      <stop offset="0" stop-color="#ff3b5c" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff3b5c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.7" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="bottomFade">
+      <rect width="600" height="800" fill="url(#fade)"/>
+    </mask>
+    <pattern id="scan" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="2" fill="#000" opacity="0.22"/>
+    </pattern>
+    <clipPath id="figure">
+      <path id="body" d="M18 800 C24 700 40 640 96 604 C150 570 206 556 236 540 L364 540 C394 556 450 570 504 604 C560 640 576 700 582 800 Z"/>
+      <path id="hoodShape" d="M300 118 C384 118 440 182 450 268 C460 352 446 446 412 520 C396 556 364 572 300 574 C236 572 204 556 188 520 C154 446 140 352 150 268 C160 182 216 118 300 118 Z"/>
+    </clipPath>
+  </defs>
+
+  <g mask="url(#bottomFade)">
+    <!-- corpo -->
+    <use href="#body" fill="url(#cloth)"/>
+    <!-- costura central e bolso canguru -->
+    <path d="M300 574 L300 800" stroke="#0a0920" stroke-width="3" opacity="0.7"/>
+    <path d="M190 720 C230 690 370 690 410 720 L430 800 L170 800 Z" fill="#0f0c33" opacity="0.8"/>
+    <path d="M190 720 C230 690 370 690 410 720" fill="none" stroke="#3a3088" stroke-width="2"/>
+
+    <!-- capuz -->
+    <use href="#hoodShape" fill="url(#hood)"/>
+    <!-- dobra interna do capuz -->
+    <path d="M300 150 C366 152 410 206 418 276 C426 350 414 430 386 494 C372 526 344 542 300 544 C256 542 228 526 214 494 C186 430 174 350 182 276 C190 206 234 152 300 150 Z" fill="#141043"/>
+    <!-- rosto na sombra -->
+    <path d="M300 186 C352 188 384 232 390 290 C396 352 386 420 362 470 C350 496 330 508 300 510 C270 508 250 496 238 470 C214 420 204 352 210 290 C216 232 248 188 300 186 Z" fill="url(#void)"/>
+    <!-- reflexo da tela no queixo -->
+    <ellipse cx="300" cy="500" rx="78" ry="40" fill="url(#screenGlow)"/>
+    <!-- código refletido (linhas de terminal) -->
+    <g fill="#ff7d95" opacity="0.5">
+      <rect x="258" y="438" width="54" height="3" rx="1.5"/>
+      <rect x="258" y="447" width="84" height="3" rx="1.5"/>
+      <rect x="270" y="456" width="40" height="3" rx="1.5"/>
+      <rect x="258" y="465" width="68" height="3" rx="1.5"/>
+    </g>
+    <!-- olhos: dois pontos de luz discretos -->
+    <g fill="#ff3b5c">
+      <rect x="252" y="330" width="26" height="4" rx="2" opacity="0.9"/>
+      <rect x="322" y="330" width="26" height="4" rx="2" opacity="0.9"/>
+    </g>
+    <g fill="#ff3b5c" opacity="0.25">
+      <rect x="244" y="326" width="42" height="12" rx="6"/>
+      <rect x="314" y="326" width="42" height="12" rx="6"/>
+    </g>
+
+    <!-- cordões do capuz -->
+    <g stroke="#cfcaf5" stroke-width="5" stroke-linecap="round" fill="none">
+      <path d="M262 556 C258 600 262 640 256 676"/>
+      <path d="M338 556 C342 600 338 640 344 676"/>
+    </g>
+    <g fill="#ff3b5c">
+      <rect x="250" y="672" width="12" height="22" rx="4"/>
+      <rect x="338" y="672" width="12" height="22" rx="4"/>
+    </g>
+
+    <!-- patch "MV" no peito -->
+    <g transform="translate(410 640) rotate(-6)">
+      <rect x="-30" y="-18" width="60" height="36" rx="4" fill="#ff3b5c"/>
+      <text x="0" y="9" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="26" fill="#fff">MV.</text>
+    </g>
+
+    <!-- textura de scanlines só sobre a figura -->
+    <rect width="600" height="800" fill="url(#scan)" clip-path="url(#figure)"/>
+
+    <!-- luz de recorte nas bordas -->
+    <g fill="none" stroke="url(#rim)" stroke-width="3">
+      <use href="#hoodShape"/>
+      <use href="#body"/>
+    </g>
+  </g>
+
+  <!-- partículas de "dados" ao redor -->
+  <g font-family="JetBrains Mono, Consolas, monospace" font-size="16" fill="#5b8cff" opacity="0.6">
+    <text x="74" y="214">01</text>
+    <text x="500" y="168">&lt;/&gt;</text>
+    <text x="512" y="380">{ }</text>
+    <text x="56" y="430">0x1F</text>
+  </g>
+  <g fill="#ff7d95" font-size="18" font-family="sans-serif">
+    <text x="116" y="300">✦</text>
+    <text x="470" y="250">+</text>
+    <text x="486" y="470">✦</text>
+  </g>
+</svg>

@@ -1,11 +1,12 @@
-import type { TechItem, ProjectItem, SocialLink, NavItem } from "../types";
+import type { TechItem, TechCategory, ProjectItem, SocialLink, NavItem, TimelineItem } from "../types";
 
 // ── Navegação ─────────────────────────────────────────────────────────────────
 export const NAV_ITEMS: NavItem[] = [
   { id: "banner",      label: "Início"      },
-  { id: "sobre",       label: "Sobre"       },
-  { id: "tecnologias", label: "Habilidades" },
   { id: "projetos",    label: "Projetos"    },
+  { id: "tecnologias", label: "Habilidades" },
+  { id: "processo",    label: "Processo"    },
+  { id: "sobre",       label: "Sobre"       },
   { id: "contato",     label: "Contato"     },
 ];
 
@@ -37,7 +38,19 @@ export const TECHS: TechItem[] = [
   // Ferramentas
   { name: "Git",        icon: "🔀", color: "#f05032", category: "ferramenta",  level: 4 },
   { name: "MySQL",      icon: "🗄️", color: "#4479a1", category: "ferramenta",  level: 3 },
+
+  // Inteligência artificial
+  { name: "ChatGPT",    icon: "🤖", color: "#10a37f", category: "ia",          level: 4 },
+  { name: "Claude",     icon: "✴️", color: "#d97757", category: "ia",          level: 4 },
 ];
+
+export const CATEGORY_LABELS: Record<TechCategory, string> = {
+  linguagem:  "Linguagem",
+  frontend:   "Front-end",
+  backend:    "Back-end",
+  ferramenta: "Ferramenta",
+  ia:         "IA",
+};
 
 // ── Projetos ──────────────────────────────────────────────────────────────────
 // 👇 Edite aqui para adicionar/remover seus projetos
@@ -45,21 +58,23 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "projeto-1",
     title: "Portfólio Pessoal",
-    description: "Site portfólio responsivo construído com HTML, CSS e JavaScript puro. Apresenta minhas habilidades, projetos e formas de contato.",
-    techs: ["HTML", "CSS", "JavaScript"],
-    repoUrl: "https://github.com/Matheusvilela1",
+    description: "Este site! Feito em React + TypeScript, com intro em wireframe, revelação ao rolar, rastro de cursores e comparador código × resultado — tudo em CSS e hooks próprios, sem biblioteca de animação.",
+    techs: ["React", "TypeScript", "CSS"],
+    repoUrl: "https://github.com/Matheusvilela1/portfolio",
     status: "concluido",
     icon: "🌐",
+    image: `${process.env.PUBLIC_URL}/projects/portfolio.jpg`,
   },
   {
     id: "projeto-2",
     title: "Cronograma de Estudos",
-    description: "Projeto de estudo com cronograma e metas semanais.",
-    techs: ["Next", "TypeScript"],
+    description: "Kro: você diz para qual prova estuda e como é a sua rotina, ele monta a grade da semana, mostra onde você mais erra e reorganiza os estudos sozinho.",
+    techs: ["Next.js", "TypeScript"],
     repoUrl: "https://github.com/Matheusvilela1/cronograma",
     liveUrl: "https://kro.vercel.app/",
     status: "em andamento",
     icon: "🚀",
+    image: `${process.env.PUBLIC_URL}/projects/kro.jpg`,
   },
   {
     id: "projeto-3",
@@ -72,5 +87,16 @@ export const PROJECTS: ProjectItem[] = [
   },
 ];
 
-// ── Typing hero ───────────────────────────────────────────────────────────────
+// ── Hero ──────────────────────────────────────────────────────────────────────
 export const TYPE_WORDS: string[] = ["Front-end", "Back-end", "TypeScript"];
+
+// 👇 Avatar do hero (SVG original de hacker de capuz). Troque por uma foto sua (PNG sem fundo) quando quiser.
+export const HERO_PHOTO = `${process.env.PUBLIC_URL}/foto.svg`;
+
+// ── Trajetória (seção Sobre) ──────────────────────────────────────────────────
+export const TIMELINE: TimelineItem[] = [
+  { when: "Formado",   title: "Técnico em Informática — IFPE",  text: "Base em lógica, redes, banco de dados e desenvolvimento." },
+  { when: "Cursando",  title: "ADS — IFPE Campus Garanhuns",    text: "Análise e Desenvolvimento de Sistemas: engenharia de software, banco de dados e arquitetura." },
+  { when: "Hoje",      title: "Desenvolvimento Web + IA",       text: "React, TypeScript e Next.js no front; Node, PHP e MySQL no back; ChatGPT e Claude no fluxo." },
+  { when: "Próximo",   title: "Aberto a oportunidades",         text: "Procurando um time para crescer e entregar produtos de verdade." },
+];

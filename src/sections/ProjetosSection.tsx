@@ -1,39 +1,57 @@
-import { ProjectCard } from "../components";
+import { useState } from "react";
+import { ProjectCard, SectionTitle } from "../components";
 import { PROJECTS } from "../data";
+import type { ProjectStatus } from "../types";
 
-export const ProjetosSection: React.FC = () => (
-  <section
-    id="projetos"
-    style={{ padding: "100px 24px", background: "#111" }}
-  >
-    <div style={{ maxWidth: 960, margin: "0 auto" }}>
-      <h2 style={{
-        fontSize: "clamp(28px, 4vw, 42px)",
-        fontWeight: 800,
-        marginBottom: 12,
-        textAlign: "center",
-        color: "#fff",
-      }}>
-        Meus <span style={{ color: "#38bdf8" }}>Projetos</span>
-      </h2>
-      <p style={{
-        textAlign: "center",
-        color: "rgba(255,255,255,0.4)",
-        marginBottom: 52,
-        fontSize: 15,
-      }}>
-        Projetos que desenvolvi  <code style={{ color: "#a78bfa", fontSize: 13 }}></code> 
-      </p>
+type Filter = "todos" | ProjectStatus;
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-        gap: 20,
-      }}>
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.id} project={project} delay={i * 100} />
-        ))}
+const FILTERS: Array<{ id: Filter; label: string }> = [
+  { id: "todos",        label: "Todos"        },
+  { id: "concluido",    label: "Concluídos"   },
+  { id: "em andamento", label: "Em andamento" },
+  { id: "pausado",      label: "Pausados"     },
+];
+
+export const ProjetosSection: React.FC = () => {
+  const [filter, setFilter] = useState<Filter>("todos");
+
+  const count = (f: Filter): number =>
+    f === "todos" ? PROJECTS.length : PROJECTS.filter((p) => p.status === f).length;
+
+  const visible = filter === "todos" ? PROJECTS : PROJECTS.filter((p) => p.status === filter);
+
+  return (
+    <section id="projetos" className="section">
+      <div className="wrap">
+        <div className="section-head">
+          <SectionTitle
+            index="01"
+            eyebrow="Trabalhos selecionados"
+            lines={["Projetos que", "falam por si."]}
+            accentLast
+          />
+
+          <div className="tabs" role="tablist" aria-label="Filtrar projetos">
+            {FILTERS.map(({ id, label }) => (
+              <button
+                key={id}
+                role="tab"
+                aria-selected={filter === id}
+                onClick={() => setFilter(id)}
+                className={`tab ${filter === id ? "is-active" : ""}`}
+              >
+                {label} <sup>{String(count(id)).padStart(2, "0")}</sup>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="projects">
+          {visible.map((project) => (
+            <ProjectCard key={project.id} project={project} index={PROJECTS.indexOf(project)} />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};

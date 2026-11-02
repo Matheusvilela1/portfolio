@@ -1,90 +1,48 @@
-import { SocialIcon } from "../components";
+import { Reveal, SectionTitle, SocialIcon } from "../components";
 import { SOCIAL_LINKS } from "../data";
 
 interface ContactInfo {
-  icon: string;
   label: string;
   value: string;
   href: string;
 }
 
 const CONTACT_INFOS: ContactInfo[] = [
-  { icon: "📞", label: "Telefone",  value: "+55 (87) 98113-9769",     href: "tel:87981139769"                       },
-  { icon: "✉️", label: "E-mail",   value: "1macv9@gmail.com",         href: "mailto:1macv9@gmail.com"               },
-  { icon: "💼", label: "LinkedIn",  value: "linkedin.com/in/macv55",   href: "https://www.linkedin.com/in/macv55/"   },
-  { icon: "🐙", label: "GitHub",    value: "github.com/Matheusvilela1",href: "https://github.com/Matheusvilela1"     },
+  { label: "Telefone", value: "+55 (87) 98113-9769",      href: "tel:87981139769"                     },
+  { label: "E-mail",   value: "1macv9@gmail.com",          href: "mailto:1macv9@gmail.com"             },
+  { label: "LinkedIn", value: "linkedin.com/in/macv55",    href: "https://www.linkedin.com/in/macv55/" },
+  { label: "GitHub",   value: "github.com/Matheusvilela1", href: "https://github.com/Matheusvilela1"   },
 ];
 
 export const ContatoSection: React.FC = () => (
-  <section
-    id="contato"
-    style={{ padding: "100px 24px", background: "#0d0d0d" }}
-  >
-    <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
-      <h2 style={{
-        fontSize: "clamp(28px, 4vw, 42px)",
-        fontWeight: 800,
-        marginBottom: 12,
-        color: "#fff",
-      }}>
-        Entre em <span style={{ color: "#38bdf8" }}>Contato</span>
-      </h2>
-      <p style={{
-        color: "rgba(255,255,255,0.45)",
-        fontSize: 15,
-        marginBottom: 48,
-      }}>
-        Quer trabalhar junto ou só conversar? Manda uma mensagem!
-      </p>
+  <section id="contato" className="section">
+    <div className="wrap">
+      <SectionTitle index="05" eyebrow="Contato" lines={["Vamos", "conversar?"]} accentLast />
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 40 }}>
-        {CONTACT_INFOS.map(({ icon, label, value, href }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-              padding: "16px 20px",
-              borderRadius: 10,
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              textDecoration: "none",
-              color: "#fff",
-              transition: "border-color 0.2s, background 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(167,139,250,0.4)";
-              e.currentTarget.style.background = "rgba(167,139,250,0.06)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-              e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-            }}
-          >
-            <span style={{ fontSize: 20 }}>{icon}</span>
-            <div style={{ textAlign: "left" }}>
-              <p style={{
-                margin: 0,
-                fontSize: 11,
-                color: "rgba(255,255,255,0.38)",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}>
-                {label}
-              </p>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 500 }}>{value}</p>
-            </div>
-          </a>
+      <div className="contact__grid">
+        {CONTACT_INFOS.map(({ label, value, href }, i) => (
+          <Reveal key={label} variant="frame" label={label} delay={i * 110}>
+            <a
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer"
+              className="contact__item sel-hover"
+            >
+              <span>{label}</span>
+              <strong>{value}</strong>
+            </a>
+          </Reveal>
         ))}
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center", gap: 16 }}>
-        {SOCIAL_LINKS.map((s) => <SocialIcon key={s.label} {...s} />)}
-      </div>
+      <Reveal variant="up" delay={200}>
+        <div className="contact__cta">
+          <a href="mailto:1macv9@gmail.com" className="btn btn--red">Mandar um e-mail →</a>
+          <div className="socials">
+            {SOCIAL_LINKS.map((s) => <SocialIcon key={s.label} {...s} />)}
+          </div>
+        </div>
+      </Reveal>
     </div>
   </section>
 );

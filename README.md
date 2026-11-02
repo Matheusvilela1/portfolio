@@ -1,73 +1,146 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+ ███╗   ███╗██╗   ██╗    ┌─────────────────────────────────────────┐
+ ████╗ ████║██║   ██║    │  $ whoami                               │
+ ██╔████╔██║██║   ██║    │  matheus_vilela — dev front & back-end  │
+ ██║╚██╔╝██║╚██╗ ██╔╝    │  $ status                               │
+ ██║ ╚═╝ ██║ ╚████╔╝     │  ● disponível para novos projetos       │
+ ╚═╝     ╚═╝  ╚═══╝  ▪   └─────────────────────────────────────────┘
+```
 
-## Available Scripts
+# Portfólio · Matheus Vilela
 
-In the project directory, you can run:
+**Não é só código. É resolver problemas.**
 
-### `npm start`
+Estudante de **Análise e Desenvolvimento de Sistemas** no **IFPE Campus Garanhuns**,
+técnico em informática e fascinado por tecnologia.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![React](https://img.shields.io/badge/React_19-0a0920?style=for-the-badge&logo=react&logoColor=61dafb)
+![TypeScript](https://img.shields.io/badge/TypeScript-0a0920?style=for-the-badge&logo=typescript&logoColor=3178c6)
+![CSS](https://img.shields.io/badge/CSS_puro-0a0920?style=for-the-badge&logo=css3&logoColor=ff3b5c)
+![Animações](https://img.shields.io/badge/libs_de_animação-0-ff3b5c?style=for-the-badge)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="public/projects/portfolio.jpg" alt="Hero do portfólio: PORTFÓLIO gigante em vermelho atrás de um hacker de capuz" width="860" />
 
-### `npm test`
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ▶ Boot sequence
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ao abrir o site, a página **se monta na sua frente**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+[000%]  desenhando wireframe ......... ▢ navbar  ▢ display  ▢ h1  ▢ image
+[045%]  aplicando estilos ............ ■ cores   ■ fontes   ■ grid
+[100%]  pronto ....................... ▲ a cortina sobe, o hero entra
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Depois disso, cada elemento continua aparecendo do mesmo jeito: primeiro um **contorno de seleção estilo Figma** (com alças e etiqueta azul), depois o conteúdo.
 
-### `npm run eject`
+## ✦ O que tem aqui dentro
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| | Efeito | Onde mora |
+|---|---|---|
+| 🧱 | **Intro em wireframe** com contador 000% → 100% | `components/IntroLoader.tsx` |
+| 🟦 | **Revelação em "frame"**: contorno desenhado → conteúdo revelado | `components/Reveal.tsx` |
+| 🖱️ | **Rastro de cursores**: setinhas e brilhos que seguem o mouse | `components/CursorTrail.tsx` |
+| 👥 | **Cursores "colaborativos"** (React, TypeScript, Node.js) passeando pelo hero | `sections/HeroSection.tsx` |
+| ↔️ | **Comparador código × resultado** arrastável (com teclado também) | `components/CompareSlider.tsx` |
+| 📜 | **Faixa infinita** com o stack | `components/Marquee.tsx` |
+| 🎯 | **Menu que sabe onde você está** (seção ativa ganha a caixa de seleção) | `hooks/useActiveSection.ts` |
+| 🌿 | **Louros desenhados por matemática** (folhas ao longo de uma curva de Bézier) | `sections/TecnologiasSection.tsx` |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Tudo isso com **CSS + hooks próprios**. Nenhuma biblioteca de animação foi instalada.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> ♿ Quem ativa *reduzir movimento* no sistema vê o site completo, sem animação nenhuma.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🗺️ Mapa do site
 
-## Learn More
+```
+00  Início       PORTFÓLIO gigante, nome, digitação, números
+01  Projetos     "Projetos que falam por si." · cards com print real + filtro por status
+──  Marquee      Java ✦ Python ✦ TypeScript ✦ React ✦ ... ✦ ChatGPT ✦ Claude
+02  Habilidades  "O código. A prática." · 14 tecnologias com barra de nível + filtro
+03  Processo     "Do código. À tela." · arraste a divisória
+04  Sobre        "Não é só código. É resolver problemas." · trajetória + citação
+05  Contato      "Vamos conversar?"
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧠 Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```ts
+const stack = {
+  linguagens:  ["Java", "Python", "JavaScript", "TypeScript"],
+  frontend:    ["HTML", "CSS", "React"],
+  backend:     ["Node.js", "PHP", "Next.js"],
+  ferramentas: ["Git", "MySQL"],
+  ia:          ["ChatGPT", "Claude"],   // parceiros de pesquisa, revisão e prototipação
+};
+```
 
+## 🚀 Rodando na sua máquina
 
+```bash
+git clone https://github.com/Matheusvilela1/portfolio.git
+cd portfolio
+npm install
+npm start          # http://localhost:3000
+```
 
+```bash
+npm run build      # versão otimizada na pasta build/
+```
+
+## 🎛️ Personalize em 1 arquivo
+
+Quase tudo que aparece na tela vem de **`src/data/index.ts`**:
+
+| Quer mudar… | Edite |
+|---|---|
+| Projetos (título, descrição, links, print) | `PROJECTS` — o print vai em `public/projects/` e no campo `image` |
+| Tecnologias e níveis | `TECHS` |
+| Palavras que o hero digita | `TYPE_WORDS` |
+| Trajetória da seção Sobre | `TIMELINE` |
+| Avatar do hero | `HERO_PHOTO` → hoje aponta para `public/foto.svg` |
+
+As cores ficam como variáveis no topo de **`src/index.css`**:
+
+```css
+--bg:   #0a0920;   /* índigo quase preto */
+--red:  #ff3b5c;   /* o vermelho de tudo */
+--sel:  #5b8cff;   /* o azul das caixas de seleção */
+```
+
+## 🗂️ Estrutura
+
+```
 src/
-├── types/
-│   └── index.ts          ← TechItem, ProjectItem, SocialLink, NavItem, enums
-├── data/
-│   └── index.ts          ← todos os dados estáticos (edite aqui seus projetos!)
-├── hooks/
-│   ├── useTypingEffect.ts
-│   ├── useVisible.ts
-│   ├── useScrolled.ts
-│   └── index.ts          ← barrel export
-├── components/
-│   ├── Navbar.tsx
-│   ├── SocialIcon.tsx
-│   ├── TechCard.tsx      ← agora com barra de nível e hover colorido
-│   ├── ProjectCard.tsx   ← novo: badges de status, chips de tech, links
-│   └── index.ts
-├── sections/
-│   ├── HeroSection.tsx
-│   ├── SobreSection.tsx
-│   ├── TecnologiasSection.tsx  ← filtros por categoria
-│   ├── ProjetosSection.tsx     ← novo
-│   ├── ContatoSection.tsx
-│   └── index.ts
-└── App.tsx               ← raiz limpa, só monta os blocos
+├── data/        ← conteúdo do site (comece por aqui)
+├── types/       ← TechItem, ProjectItem, TimelineItem...
+├── hooks/       ← useVisible · useActiveSection · useTypingEffect · useScrolled
+├── components/  ← Reveal · IntroLoader · CursorTrail · CompareSlider · Marquee · cards
+├── sections/    ← Hero · Projetos · Tecnologias · Processo · Sobre · Contato
+├── index.css    ← tokens, animações e layout responsivo
+└── App.tsx      ← monta tudo em ordem
+public/
+├── foto.svg     ← avatar: hacker de capuz desenhado à mão em SVG
+└── projects/    ← prints dos projetos
+```
+
+## 📡 Contato
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-macv55-0a0920?style=for-the-badge&logo=linkedin&logoColor=5b8cff)](https://www.linkedin.com/in/macv55/)
+[![GitHub](https://img.shields.io/badge/GitHub-Matheusvilela1-0a0920?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Matheusvilela1)
+[![Instagram](https://img.shields.io/badge/Instagram-vilela__05-0a0920?style=for-the-badge&logo=instagram&logoColor=ff3b5c)](https://www.instagram.com/vilela_05/)
+[![E-mail](https://img.shields.io/badge/E--mail-1macv9@gmail.com-ff3b5c?style=for-the-badge&logo=gmail&logoColor=white)](mailto:1macv9@gmail.com)
+
+```
+$ exit
+> obrigado por ler até aqui. agora vai lá ver o site rodando ✦
+```
+
+</div>
