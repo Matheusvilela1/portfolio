@@ -78,6 +78,17 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "projeto-3",
+    title: "Orla · Finanças Pessoais",
+    description: "Painel para controlar o próprio dinheiro: quanto sobra no mês, contas atrasadas, orçamento por categoria, investimentos e metas. Os dados ficam num arquivo no seu computador, e os gráficos são feitos só com HTML e CSS.",
+    techs: ["React", "TypeScript", "Vite"],
+    repoUrl: "https://github.com/Matheusvilela1/orla-gastos",
+    liveUrl: "https://matheusvilela1.github.io/orla-gastos/",
+    status: "concluido",
+    icon: "💰",
+    image: `${process.env.PUBLIC_URL}/projects/orla.jpg`,
+  },
+  {
+    id: "projeto-4",
     title: "Pensando....",
     description: "",
     techs: ["Java", "MySQL"],
