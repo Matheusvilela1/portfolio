@@ -54,7 +54,7 @@ export const SobreSection: React.FC = () => (
           <h3>Quem sou</h3>
           <p>
             Sou o Matheus, formado no curso Técnico de Informática pelo IFPE e hoje cursando Análise e
-            Desenvolvimento de Sistemas no IFPE Campus Garanhuns. Sou fascinado por tecnologia:
+            Desenvolvimento de Sistemas no IFPE. Sou fascinado por tecnologia:
             programar, para mim, é desvendar quebra-cabeças e construir soluções que impactam a
             vida das pessoas.
           </p>

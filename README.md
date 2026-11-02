@@ -13,7 +13,7 @@
 
 **Não é só código. É resolver problemas.**
 
-Estudante de **Análise e Desenvolvimento de Sistemas** no **IFPE Campus Garanhuns**,
+Estudante de **Análise e Desenvolvimento de Sistemas** no **IFPE**,
 técnico em informática e fascinado por tecnologia.
 
 ![React](https://img.shields.io/badge/React_19-0a0920?style=for-the-badge&logo=react&logoColor=61dafb)

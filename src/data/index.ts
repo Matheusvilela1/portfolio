@@ -107,7 +107,7 @@ export const HERO_PHOTO = `${process.env.PUBLIC_URL}/foto.png`;
 // ── Trajetória (seção Sobre) ──────────────────────────────────────────────────
 export const TIMELINE: TimelineItem[] = [
   { when: "Formado",   title: "Técnico em Informática — IFPE",  text: "Base em lógica, redes, banco de dados e desenvolvimento." },
-  { when: "Cursando",  title: "ADS — IFPE Campus Garanhuns",    text: "Análise e Desenvolvimento de Sistemas: engenharia de software, banco de dados e arquitetura." },
+  { when: "Cursando",  title: "ADS — IFPE",                    text: "Análise e Desenvolvimento de Sistemas: engenharia de software, banco de dados e arquitetura." },
   { when: "Hoje",      title: "Desenvolvimento Web + IA",       text: "React, TypeScript e Next.js no front; Node, PHP e MySQL no back; ChatGPT e Claude no fluxo." },
   { when: "Próximo",   title: "Aberto a oportunidades",         text: "Procurando um time para crescer e entregar produtos de verdade." },
 ];
