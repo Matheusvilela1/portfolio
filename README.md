@@ -21,7 +21,7 @@ técnico em informática e fascinado por tecnologia.
 ![CSS](https://img.shields.io/badge/CSS_puro-0a0920?style=for-the-badge&logo=css3&logoColor=ff3b5c)
 ![Animações](https://img.shields.io/badge/libs_de_animação-0-ff3b5c?style=for-the-badge)
 
-<img src="public/projects/portfolio-hero.jpg" alt="Hero do portfólio: PORTFÓLIO gigante em vermelho atrás de um hacker de capuz" width="860" />
+<img src="public/projects/portfolio-hero.jpg" alt="Hero do portfólio: PORTFÓLIO gigante em vermelho atrás da foto do Matheus" width="860" />
 
 </div>
 
@@ -103,7 +103,7 @@ Quase tudo que aparece na tela vem de **`src/data/index.ts`**:
 | Tecnologias e níveis | `TECHS` |
 | Palavras que o hero digita | `TYPE_WORDS` |
 | Trajetória da seção Sobre | `TIMELINE` |
-| Avatar do hero | `HERO_PHOTO` → hoje aponta para `public/foto.svg` |
+| Foto do hero | `HERO_PHOTO` → hoje aponta para `public/foto.png` (PNG 600×800 sem fundo) |
 
 As cores ficam como variáveis no topo de **`src/index.css`**:
 
@@ -125,7 +125,8 @@ src/
 ├── index.css    ← tokens, animações e layout responsivo
 └── App.tsx      ← monta tudo em ordem
 public/
-├── foto.svg     ← avatar: hacker de capuz desenhado à mão em SVG
+├── foto.png     ← foto do hero, recortada sem fundo
+├── foto.svg     ← avatar alternativo: hacker de capuz desenhado em SVG
 └── projects/    ← prints dos projetos
 ```
 

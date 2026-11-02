@@ -58,7 +58,7 @@ export const HeroSection: React.FC<Props> = ({ ready }) => {
         <span aria-hidden="true">PORTFÓLIO</span>
       </Reveal>
 
-      <Reveal variant="frame" label="Image · foto.svg" start={ready} delay={250} className="hero__photo">
+      <Reveal variant="frame" label="Image · foto.png" start={ready} delay={250} className="hero__photo">
         {hasPhoto
           ? <img src={HERO_PHOTO} alt="Matheus Vilela" onError={() => setHasPhoto(false)} />
           : <Silhouette />}

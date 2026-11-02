@@ -90,8 +90,8 @@ export const PROJECTS: ProjectItem[] = [
 // ── Hero ──────────────────────────────────────────────────────────────────────
 export const TYPE_WORDS: string[] = ["Front-end", "Back-end", "TypeScript"];
 
-// 👇 Avatar do hero (SVG original de hacker de capuz). Troque por uma foto sua (PNG sem fundo) quando quiser.
-export const HERO_PHOTO = `${process.env.PUBLIC_URL}/foto.svg`;
+// 👇 Foto do hero: PNG recortado sem fundo, 600×800 (3:4). O avatar alternativo fica em public/foto.svg.
+export const HERO_PHOTO = `${process.env.PUBLIC_URL}/foto.png`;
 
 // ── Trajetória (seção Sobre) ──────────────────────────────────────────────────
 export const TIMELINE: TimelineItem[] = [

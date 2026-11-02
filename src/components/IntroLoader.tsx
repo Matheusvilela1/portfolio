@@ -20,7 +20,7 @@ const BOXES: Box[] = [
   { x: 2,  y: 57, w: 25,  h: 4 },
   { x: 2,  y: 66, w: 11,  h: 7,  label: "Button" },
   { x: 15, y: 66, w: 9,   h: 7 },
-  { x: 36, y: 22, w: 28,  h: 78, label: "Image · foto.svg" },
+  { x: 36, y: 22, w: 28,  h: 78, label: "Image · foto.png" },
   { x: 82, y: 36, w: 16,  h: 9,  label: "Stat 01" },
   { x: 82, y: 49, w: 16,  h: 9 },
   { x: 82, y: 62, w: 16,  h: 9 },
