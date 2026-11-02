@@ -7,8 +7,8 @@ interface Fact {
 }
 
 const FACTS: Fact[] = [
-  { label: "Idade",     value: "19 anos"                     },
-  { label: "Cursando",  value: "ADS — IFPE Garanhuns"        },
+  { label: "Idade",     value: "20 anos"                     },
+  { label: "Cursando",  value: "Análise e Desenvolvimento de Sistemas — IFPE" },
   { label: "Formação",  value: "Téc. Informática — IFPE"     },
   { label: "Foco",      value: "Desenvolvimento Web"         },
   { label: "IA no dia", value: "ChatGPT e Claude"            },
@@ -53,7 +53,7 @@ export const SobreSection: React.FC = () => (
         <Reveal variant="up" delay={240} className="about__bio">
           <h3>Quem sou</h3>
           <p>
-            Sou o Matheus, formado no Técnico de Informática pelo IFPE e hoje cursando Análise e
+            Sou o Matheus, formado no curso Técnico de Informática pelo IFPE e hoje cursando Análise e
             Desenvolvimento de Sistemas no IFPE Campus Garanhuns. Sou fascinado por tecnologia:
             programar, para mim, é desvendar quebra-cabeças e construir soluções que impactam a
             vida das pessoas.

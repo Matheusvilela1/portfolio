@@ -83,7 +83,7 @@ export const HeroSection: React.FC<Props> = ({ ready }) => {
             <span className="caret" />
           </p>
           <p className="hero__bio">
-            Estudante de ADS no IFPE Garanhuns, fascinado por tecnologia. Transformo ideias
+            Estudante de Análise e Desenvolvimento de Sistemas no IFPE, fascinado por tecnologia. Transformo ideias
             em interfaces rápidas e sistemas que funcionam — com IA no fluxo.
           </p>
           <div className="hero__ctas">
