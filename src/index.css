@@ -972,7 +972,7 @@ a { color: inherit; }
 .quote cite { font: 400 30px/1 var(--f-script); font-style: normal; }
 
 /* ── Contato ─────────────────────────────────────────────────────────────── */
-.contact__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 48px 0 36px; }
+.contact__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 48px 0 36px; }
 .contact__item {
   display: flex;
   flex-direction: column;
@@ -984,6 +984,22 @@ a { color: inherit; }
   transition: background 0.2s;
 }
 .contact__item:hover { background: rgba(255, 255, 255, 0.04); }
+.contact__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 8px;
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+  color: #fff;
+  transition: background 0.25s, border-color 0.25s, transform 0.4s var(--ease);
+}
+.contact__item:hover .contact__icon {
+  background: var(--red);
+  border-color: var(--red);
+  transform: translateY(-3px);
+}
 .contact__item span { font: 500 11px/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
 .contact__item strong { font-size: 15px; font-weight: 500; word-break: break-word; }
 .contact__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }

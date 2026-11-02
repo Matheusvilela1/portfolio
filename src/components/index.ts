@@ -7,3 +7,4 @@ export { IntroLoader }           from "./IntroLoader";
 export { CursorTrail }           from "./CursorTrail";
 export { CompareSlider }         from "./CompareSlider";
 export { Marquee }               from "./Marquee";
+export { ContactIcon }           from "./ContactIcon";

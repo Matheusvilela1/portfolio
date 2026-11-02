@@ -21,7 +21,7 @@ técnico em informática e fascinado por tecnologia.
 ![CSS](https://img.shields.io/badge/CSS_puro-0a0920?style=for-the-badge&logo=css3&logoColor=ff3b5c)
 ![Animações](https://img.shields.io/badge/libs_de_animação-0-ff3b5c?style=for-the-badge)
 
-<img src="public/projects/portfolio.jpg" alt="Hero do portfólio: PORTFÓLIO gigante em vermelho atrás de um hacker de capuz" width="860" />
+<img src="public/projects/portfolio-hero.jpg" alt="Hero do portfólio: PORTFÓLIO gigante em vermelho atrás de um hacker de capuz" width="860" />
 
 </div>
 

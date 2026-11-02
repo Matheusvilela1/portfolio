@@ -63,7 +63,7 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/Matheusvilela1/portfolio",
     status: "concluido",
     icon: "🌐",
-    image: `${process.env.PUBLIC_URL}/projects/portfolio.jpg`,
+    image: `${process.env.PUBLIC_URL}/projects/portfolio-hero.jpg`,
   },
   {
     id: "projeto-2",
